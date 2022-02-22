@@ -20,6 +20,9 @@ const app = express();
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 app.use(express.static("posts"));
+app.use(express.urlencoded({
+    extended: true
+}))
 app.use(router);
 app.use(Logger)
 

@@ -5,7 +5,7 @@ const router = new Router()
 router.get('/', (req, res) => {
     res.status(200).sendFile("../public/index.html")
 })
-router.get('/posts/:id', PostController.getOne)
+router.get('/post/:id', PostController.getOne)
 router.get('/posts', PostController.getAll)
 router.post('/posts', PostController.create)
 router.put('/posts', PostController.update)

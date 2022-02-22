@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
 })
 router.get('/post/:id', PostController.getOne)
 router.get('/posts', PostController.getAll)
-router.post('/posts', PostController.create)
+router.post('/create', PostController.create)
 router.put('/posts', PostController.update)
 router.delete('/posts/:id', PostController.delete)
 

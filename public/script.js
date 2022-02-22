@@ -12,25 +12,10 @@
 //     // return resp
 // }
 
-getbyid.onsubmit = async (e) => {
+get_one.onsubmit = async (e) => {
     e.preventDefault()
-    const target = e.target;
-    console.log('target :>> ', {
-        target
-    });
-
-    const id = post_id.value
-    const body = {
-        id: id
-    }
-
-    // const response = await simpleFetch.post("/posts/:id", body)
-    console.log('body :>> ', body);
-    // const data = new FormData(get_one);
-
-    // console.log('data :>> ', data);
-    console.log('id :>> ', id);
-    return response
-
+    const form = document.querySelector("#get_one")
+    const data = new FormData(form);
+    console.log('data :>> ', data);
 
 }

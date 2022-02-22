@@ -1,8 +1,6 @@
 import express from "express";
 import mongoose from "mongoose"
-import {
-    router
-} from "./router.js";
+import router from "./router.js";
 import Logger from "./Utils.js";
 
 import {
@@ -20,7 +18,8 @@ const DB_URL = `mongodb+srv://akuma:darks1de@cluster0.lu3wt.mongodb.net/myFirstD
 
 const app = express();
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(`${__dirname}/public`));
+app.use(express.static("posts"));
 app.use(router);
 app.use(Logger)
 

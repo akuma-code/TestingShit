@@ -1,14 +1,36 @@
-btn_sub.onsubmit = (e) => {
-    e.preventDefault()
+btn_sub.onsubmit = async (e) => {
+    // e.preventDefault()
 
 
     const body = {
-        post_name: author.value,
-        post_title: title.value,
-        post_content: content.value
+        author: author.value,
+        title: title.value,
+        content: content.value
+    }
+    // const resp = await simpleFetch.post("/posts", body)
+    // console.log('resp :>> ', resp);
+    // return resp
+}
+
+getbyid.onsubmit = async (e) => {
+    e.preventDefault()
+    const target = e.target;
+    console.log('target :>> ', {
+        target
+    });
+
+    const id = post_id.value
+    const body = {
+        id: id
     }
 
-    const form = new FormData(body);
+    // const response = await simpleFetch.post("/posts/:id", body)
     console.log('body :>> ', body);
-    console.log('form :>> ', form);
+    // const data = new FormData(get_one);
+
+    // console.log('data :>> ', data);
+    console.log('id :>> ', id);
+    return response
+
+
 }

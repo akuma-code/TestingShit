@@ -1,5 +1,7 @@
 import PostService from "./PostService.js";
-
+/**@class Класс для работы с данными клиент-сервер
+ * @params (req, res)
+ */
 class PostController {
     async create(req, res) {
         try {
@@ -23,11 +25,14 @@ class PostController {
         }
     }
     async getOne(req, res) {
+        const id = req.params.id
+        console.log("get one: ", id);
+
         try {
-            const post = await PostService.getOne(req.params.id)
+            const post = await PostService.getOne(id)
             return res.json(post)
         } catch (e) {
-            res.status(500).json(e)
+            res.status(500).json(e.message)
         }
     }
     async update(req, res) {

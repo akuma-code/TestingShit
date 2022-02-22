@@ -1,5 +1,5 @@
 import Post from "./Post.js";
-
+/**@class работает с данными, получеными из базы данных */
 class PostService {
     async create(post) {
         try {
@@ -10,7 +10,7 @@ class PostService {
 
             return createdPost;
         } catch (e) {
-            console.log(e);
+            console.log(e.message);
         }
     }
 

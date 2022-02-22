@@ -1,8 +1,13 @@
 import mongoose from "mongoose";
-
+/** @const схема запроса в МонгоДБ
+ * @param author автор
+ * @param title заголовок
+ * @param content данные
+ */
 const Post = new mongoose.Schema({
     author: {
-        type: String
+        type: String,
+        required: true
     },
     title: {
         type: String

@@ -1,30 +1,33 @@
 import express from "express";
 import mongoose from "mongoose"
 import router from "./router.js";
-import Logger from "./Utils.js";
 
 import {
-    dirname
-} from 'path'
-import {
-    fileURLToPath
-} from 'url'
-const __dirname = dirname(fileURLToPath(
-    import.meta.url))
+    Logger,
+    __dirname
+} from "./Utils.js";
 
-const PORT = 3000;
-const DB_URL = `mongodb+srv://akuma:darks1de@cluster0.lu3wt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+import dotenv from "dotenv";
+dotenv.config()
+
+
+
+
+const PORT = process.env.PORT;
+const DB_URL = process.env.DB_URL;
 
 
 const app = express();
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
-app.use(express.static("posts"));
+// app.use(express.static("/posts"));
 app.use(express.urlencoded({
     extended: true
 }))
+
 app.use(router);
 app.use(Logger)
+
 
 
 async function startApp() {

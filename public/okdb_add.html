@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel='stylesheet' href='style.css' />
+    <meta charset='UTF-8'>
+    <!-- <meta http-equiv='Content-Security-Policy' content='script-src ' self' 'unsafe-inline' ;' /> -->
+</head>
+
+<body>
+    <a href="/">Back</a>
+    <h3>add to DB</h3>
+    <form action="/add" method="post" id='add_okno'>
+        <input type="text" name='name' placeholder='name' value='OKNO_01'>
+        <input type="text" name='system' list='sys_types' placeholder='system' value='WHS'>
+        <datalist id="sys_types">
+            <option value="WHS">WHS</option>
+            <option value="Proline">Proline</option>
+        </datalist>
+        <input type="text" list="glass_types" name="glass" placeholder='glass' value="4-16-4">
+        <datalist id="glass_types">
+            <option value="4-16-4">4-16-4</option>
+            <option value="4-10-4-10-4">4-10-4-10-4</option>
+        </datalist>
+
+        <input type="text" name='price' placeholder='price' value="3700">
+
+        <input type="submit" value="Add Okno">
+    </form>
+
+    </div>
+
+
+    <script src="db_load.js"></script>
+</body>
+
+</html>

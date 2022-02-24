@@ -2,6 +2,9 @@ import express from "express";
 import mongoose from "mongoose"
 import router from "./router.js";
 import Logger from "./Utils.js";
+import dotenv from "dotenv"
+dotenv.config()
+
 
 import {
     dirname
@@ -12,14 +15,14 @@ import {
 const __dirname = dirname(fileURLToPath(
     import.meta.url))
 
-const PORT = 3000;
+const PORT = process.env.PORT;
 const DB_URL = `mongodb+srv://akuma:darks1de@cluster0.lu3wt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
 
 const app = express();
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
-app.use(express.static("posts"));
+// app.use(express.static(`${__dirname}/posts`));
 app.use(express.urlencoded({
     extended: true
 }))

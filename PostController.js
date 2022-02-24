@@ -5,20 +5,20 @@ import PostService from "./PostService.js";
 class PostController {
     async create(req, res) {
         try {
+            console.count("post added")
 
             const post = await PostService.create(req.body)
-            console.count("post added")
-            res.status(200).json(post)
-            // console.log(res.json(post));
+
+            res.json(post)
         } catch (e) {
-            res.status(500).json(e)
+            res.status(500).json(e.message)
         }
-        // res.redirect('/')
+
     }
 
     async getAll(req, res) {
         try {
-            const posts = await PostService.getAll() || [];
+            const posts = await PostService.getAll();
             return res.json(posts);
         } catch (e) {
             res.status(500).json(e)
@@ -27,6 +27,7 @@ class PostController {
     async getOne(req, res) {
         const id = req.params.id
         console.log("get one: ", id);
+        console.log('req.params :>> ', req.params);
 
         try {
             const post = await PostService.getOne(id)

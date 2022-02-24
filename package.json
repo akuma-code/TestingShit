@@ -15,5 +15,8 @@
     "mongoose": "^6.2.2",
     "nodemon": "^2.0.15",
     "very-simple-fetch": "^0.2.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0"
   }
 }

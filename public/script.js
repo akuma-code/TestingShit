@@ -14,11 +14,8 @@
 
 get_one.onsubmit = async (e) => {
     // e.preventDefault()
-    const form = document.querySelector("#get_one")
-    const data = new FormData(e.target);
+    const response = await fetch(`posts/${post_id.value}`)
+    console.log('response :>> ', response);
 
-    console.log('id :>> ',
-        post_id.value
-    );
-    return post_id.value
+    // return response
 }

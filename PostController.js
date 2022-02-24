@@ -25,9 +25,11 @@ class PostController {
         }
     }
     async getOne(req, res) {
-        const id = req.params.id
+        const {
+            id
+        } = req.params
         console.log("get one: ", id);
-        console.log('req.params :>> ', req.params);
+
 
         try {
             const post = await PostService.getOne(id)

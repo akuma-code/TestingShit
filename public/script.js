@@ -2,7 +2,7 @@ import {
     request
 } from "../Utils.js"
 
-
+console.log("started")
 
 get_one.onsubmit = async (e) => {
 

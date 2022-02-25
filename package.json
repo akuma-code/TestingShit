@@ -17,6 +17,7 @@
     "very-simple-fetch": "^0.2.0"
   },
   "devDependencies": {
-    "dotenv": "^16.0.0"
+    "dotenv": "^16.0.0",
+    "uuid": "^8.3.2"
   }
 }

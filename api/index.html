@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel='stylesheet' href='styles.css' />
+    <meta charset='UTF-8'>
+    <!-- <meta http-equiv='Content-Security-Policy' content='script-src ' self' 'unsafe-inline' ;' /> -->
+</head>
+
+<body>
+    <div class="cont_form">
+        <form id="add_ok" class="add_form" action="/api">
+            <label for="name"><input type="text" name="name" id="name" data-form="name" autocomplete="on"
+                    value="OKNO_03">Name</label>
+            <label for="amount"><input type="number" name="amount" id="amount" data-form="amount"
+                    value="5">Amount</label>
+            <input type="submit" value="ADD" id="add" form="add_ok">
+        </form>
+    </div>
+    <div class="cont_list" id="list"></div>
+    <script src="client.js" type="module"></script>
+</body>
+
+</html>

@@ -35,7 +35,7 @@ class HTMLService {
     async getList(items = []) {
         const UL = document.createElement('ul');
 
-        console.log('getList items :>> ', items);
+
         items.forEach(item => {
 
             this.ItemCard(item)

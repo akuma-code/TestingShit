@@ -55,6 +55,7 @@ app.post("/api", (req, res) => {
 app.delete("/api/:id", (req, res) => {
 
     SKLAD_GP = SKLAD_GP.filter(o => o.id !== req.params.id)
+    console.log('Sklad Positions :>> ', SKLAD_GP.length);
     res.status(200).json({
         message: `Position  removed`
     })

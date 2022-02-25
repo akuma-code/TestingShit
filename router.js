@@ -4,12 +4,7 @@ import okCTRL from "./okna/ControllerW.js";
 import {
     __dirname
 } from "./Utils.js"
-const PageContent = /*html*/ `
-    <div>
-        <a href="/">back</a><br>
-        <h3>OK Database</h3>
-    </div>
-`;
+
 
 const PagePath = `${__dirname}/public/okdb.html`
 const addPath = `${__dirname}/public/okdb_add.html`

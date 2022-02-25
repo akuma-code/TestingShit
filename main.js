@@ -15,7 +15,7 @@ dotenv.config()
 
 
 
-const SKLAD_GP = [{
+let SKLAD_GP = [{
     id: v4(),
     name: "Okno_01",
     amount: 5
@@ -38,7 +38,7 @@ app.use(Logger)
 //*GET ALL
 app.get("/api", async (req, res) => {
 
-    console.log('SKLAD_GP :>> ', SKLAD_GP);
+    console.log('Sklad Positions :>> ', SKLAD_GP.length);
     res.status(200).json(SKLAD_GP)
 })
 //*Add new
@@ -48,14 +48,15 @@ app.post("/api", (req, res) => {
         id: v4()
     }
     SKLAD_GP.push(newok);
+    console.log('added :>> ', newok);
     res.status(200).json(SKLAD_GP)
-    console.log('SKLAD_GP :>> ', SKLAD_GP);
 })
 //*Delete
 app.delete("/api/:id", (req, res) => {
-    SKLAD_GP = SKLAD_GP.filter(o => o.id === req.params.id)
+
+    SKLAD_GP = SKLAD_GP.filter(o => o.id !== req.params.id)
     res.status(200).json({
-        message: "Position removed"
+        message: `Position  removed`
     })
 })
 //**

@@ -1,34 +1,21 @@
-// btn_sub.onsubmit = async (e) => {
-//     // e.preventDefault()
+import {
+    request
+} from "../Utils.js"
 
 
-
-
-//     const body = {
-//         author: author.value,
-//         title: title.value,
-//         content: content.value
-//     }
-//     // const resp = await simpleFetch.post("/posts", body)
-//     // console.log('resp :>> ', resp);
-//     // return resp
-// }
 
 get_one.onsubmit = async (e) => {
-    e.preventDefault()
-    const form = document.querySelector("#get_one")
-    let elem = new FormData(form)
+
+    e.preventDefault();
+
+
     const id = post_id.value
     const url = `/posts/${id}`
-    const response = await fetch(url, {
-        method: "get"
-    })
-    // debugger
-    const result = await response.json()
+    const response = await request(url)
 
-    console.log('result :>> ', result);
+
+    console.log('response :>> ', response);
     let text = ''
-    Object.entries(result).forEach(item => text += `${item.join(': ')}<br>`)
-    // let text = `<b>${Object.entries(result).join(';')}</b><br>`
+    Object.entries(response).forEach(item => text += `${item.join(': ')}<br>`)
     document.body.insertAdjacentHTML("beforeend", text)
 }

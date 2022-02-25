@@ -1,6 +1,6 @@
 import Router from 'express'
 import PostController from "./PostController.js";
-import okCTRL from "./okna/ControllerW.js";
+import okCTRL from "./okna/oknaCTRL.js";
 import {
     __dirname
 } from "./Utils.js"

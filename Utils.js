@@ -9,7 +9,7 @@ export function isJSON(data) {
         console.log('e.message :>> ', e.message);
     }
 }
-export async function request(url, method = 'GET', data = null) {
+export async function $request(url, method = 'GET', data = null) {
     try {
         const headers = {}
         let body

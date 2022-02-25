@@ -1,4 +1,10 @@
-async function request(url, method = 'GET', data = null) {
+import HTMLService from "./HTMLService.js"
+import DataController from "./DATAController.js"
+import DATAController from "./DATAController.js"
+
+
+
+export async function $req(url, method = 'GET', data = null) {
     try {
         const headers = {}
         let body
@@ -22,43 +28,44 @@ async function request(url, method = 'GET', data = null) {
 function getData(selector) {
     const ELEM = document.querySelectorAll(`${selector}`);
     let result = {};
-    ELEM.forEach(e => {
+    ELEM.forEach(input => {
         const {
             form
-        } = e.dataset
+        } = input.dataset
 
-        result[form] = e.value
+        result[form] = input.value
 
     })
 
     return result
 }
 
-function render(data = [], id = "list") {
+function render(ListElem, id = "output") {
     console.count("rendered");
     const list = document.getElementById(id);
     list.innerHTML = ''
-    const btn = document.createElement('button');
-    btn.textContent = "DELETE"
+    // const btn = document.createElement('button');
+    // btn.textContent = "DELETE"
 
-    data.forEach(item => {
-        list.insertAdjacentHTML("afterbegin", `<li>${item.name}: ${item.amount}, ${item.id} </li>`)
-        btn.addEventListener("click", e => {
-            removeItem(item.id)
+    // data.forEach(item => {
+    //     list.insertAdjacentHTML("afterbegin", `<li>${item.name}: ${item.amount}, ${item.id} </li>`)
+    //     btn.addEventListener("click", e => {
+    //         removeItem(item.id)
 
-        })
-        list.insertAdjacentElement("beforeend", btn)
-    })
+    //     })
+    //     list.insertAdjacentElement("beforeend", btn)
+    // })
+    list.insertAdjacentElement("afterbegin", ListElem)
 }
 
 async function removeItem(id) {
-    const okna = await request("/api")
-    await request(`/api/${id}`, 'delete');
+    const okna = await $req("/api")
+    await $req(`/api/${id}`, 'delete');
     return okna
 }
 
 async function updateList() {
-    const SKLAD = await request("/api")
+    const SKLAD = await $req("/api")
         .then(render);
     return SKLAD
 }
@@ -67,11 +74,12 @@ add_ok.onsubmit = async (e) => {
     e.preventDefault();
 
 
-    const res = await request("/api", "POST", getData("[data-form]"))
-        .then(render)
+    const res = await $req("/api", "POST", getData("[data-form]"))
+    DataController.updateList()
 
+    // const updatedData = await request("/api")
 
     return res
 }
 
-updateList()
+DATAController.updateList()

@@ -15,9 +15,9 @@ dotenv.config()
 
 
 
-let SKLAD_GP = [{
+export let SKLAD_GP = [{
     id: v4(),
-    name: "Okno_01",
+    name: "OKNO_01",
     amount: 5
 }]
 const PORT = process.env.PORT;

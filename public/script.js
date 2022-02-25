@@ -2,6 +2,8 @@
 //     // e.preventDefault()
 
 
+
+
 //     const body = {
 //         author: author.value,
 //         title: title.value,
@@ -15,7 +17,18 @@
 get_one.onsubmit = async (e) => {
     e.preventDefault()
     const form = document.querySelector("#get_one")
-    const data = new FormData(form);
-    console.log('data :>> ', data);
+    let elem = new FormData(form)
+    const id = post_id.value
+    const url = `/posts/${id}`
+    const response = await fetch(url, {
+        method: "get"
+    })
+    // debugger
+    const result = await response.json()
 
+    console.log('result :>> ', result);
+    let text = ''
+    Object.entries(result).forEach(item => text += `${item.join(': ')}<br>`)
+    // let text = `<b>${Object.entries(result).join(';')}</b><br>`
+    document.body.insertAdjacentHTML("beforeend", text)
 }

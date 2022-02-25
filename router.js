@@ -26,7 +26,7 @@ router.get('/okHTML', async (req, res) => {
 })
 
 router.post("/add", okCTRL.add)
-router.get('/post/:id', PostController.getOne)
+router.get('/posts/:id', PostController.getOne)
 router.get('/posts', PostController.getAll)
 router.post('/create', PostController.create)
 router.put('/posts', PostController.update)

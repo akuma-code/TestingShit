@@ -4,8 +4,6 @@ class HTMLService {
         $out.innerHTML = '';
         $out.insertAdjacentElement('beforeend', HTML_UL)
     }
-
-
 }
 
 export default new HTMLService()

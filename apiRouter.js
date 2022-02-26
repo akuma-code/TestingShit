@@ -9,7 +9,7 @@ apiRouter.post("/api", apiHandler.addOne)
 //* getAll
 apiRouter.get("/api", apiHandler.getAll)
 //* getOne
-apiRouter.get("/api/:id", apiHandler.addOne)
+apiRouter.get("/api/:id", apiHandler.getOne)
 //* DELETE ONE
 apiRouter.delete("/api/:id", apiHandler.delete)
 

@@ -3,7 +3,7 @@ import PostController from "./PostController.js";
 import okCTRL from "./okna/oknaCTRL.js";
 import {
     __dirname
-} from "./Utils.js"
+} from "./utils.js"
 
 
 const PagePath = `${__dirname}/public/okdb.html`

@@ -1,6 +1,6 @@
-import HTMLService from "./HTMLService.js"
 import DataController from "./DATAController.js"
-import DATAController from "./DATAController.js"
+import HTMLService from "./HTMLService.js"
+import ItemCardService from "./ItemCardService.js"
 
 
 
@@ -14,7 +14,7 @@ export async function $req(url, method = 'GET', data = null) {
             body = JSON.stringify(data)
         }
 
-        const response = await fetch(url, {
+        let response = await fetch(url, {
             method,
             headers,
             body
@@ -24,6 +24,10 @@ export async function $req(url, method = 'GET', data = null) {
         console.warn('Error:', e.message)
     }
 }
+
+
+
+
 
 function getData(selector) {
     const ELEM = document.querySelectorAll(`${selector}`);
@@ -44,24 +48,13 @@ function render(ListElem, id = "output") {
     console.count("rendered");
     const list = document.getElementById(id);
     list.innerHTML = ''
-    // const btn = document.createElement('button');
-    // btn.textContent = "DELETE"
-
-    // data.forEach(item => {
-    //     list.insertAdjacentHTML("afterbegin", `<li>${item.name}: ${item.amount}, ${item.id} </li>`)
-    //     btn.addEventListener("click", e => {
-    //         removeItem(item.id)
-
-    //     })
-    //     list.insertAdjacentElement("beforeend", btn)
-    // })
-    list.insertAdjacentElement("afterbegin", ListElem)
+    list.insertAdjacentElement("beforeend", ListElem)
 }
 
 async function removeItem(id) {
-    const okna = await $req("/api")
+    const item = await $req("/api")
     await $req(`/api/${id}`, 'delete');
-    return okna
+    return item
 }
 
 async function updateList() {
@@ -75,11 +68,10 @@ add_ok.onsubmit = async (e) => {
 
 
     const res = await $req("/api", "POST", getData("[data-form]"))
-    DataController.updateList()
+    const _dbItems = await $req("/api");
+    const UL = await ItemCardService.getList(_dbItems)
+    HTMLService.update(UL)
 
-    // const updatedData = await request("/api")
-
-    return res
 }
 
-DATAController.updateList()
+window.addEventListener("load", DataController.updateList())

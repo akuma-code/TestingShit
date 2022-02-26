@@ -2,23 +2,24 @@ import {
     $req
 } from "./client.js";
 
-import HTMLService from "./HTMLService.js"
-// import {
-//     $request
-// } from "../Utils.js";
+import ItemCardService from "./ItemCardService.js"
+
 
 class DataController {
-
+    async getAll() {
+        const data = await $req("/api")
+        return data
+    }
 
     async updateList(outelem_id = "output") {
         const $out = document.getElementById(outelem_id);
-        const dataList = await $req("/api").then(items => HTMLService.getList(items))
+        const dataList = await this.getAll().then(items => ItemCardService.getList(items))
         $out.innerHTML = '';
-        $out.insertAdjacentElement('afterbegin', dataList)
+        $out.insertAdjacentElement('beforeend', dataList)
 
     }
     async delete(id) {
-        await $req(`/api/${id}`, 'DELETE').then(items => HTMLService.getList(items))
+        await $req(`/api/${id}`, 'DELETE').then(items => ItemCardService.getList(items))
     }
 }
 

@@ -21,7 +21,8 @@ const DB_URL = process.env.DB_URL;
 
 
 const app = express();
-app.use(express.static(`${__dirname}/api`));
+app.use(express.static(
+    `${__dirname}/api`));
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true

@@ -16,6 +16,7 @@ dotenv.config()
 
 const PORT = process.env.PORT;
 const HOST_HOME = '192.168.1.166';
+const HOST_WORK = '192.168.0.13'
 const DB_URL = process.env.DB_URL;
 
 
@@ -46,8 +47,8 @@ async function startApp() {
 }
 
 async function start() {
-    app.listen(PORT, '192.168.1.116', () => {
-        console.log("Server started on 192.168.1.116:", PORT)
+    app.listen(PORT, () => {
+        console.log("Server started on PORT:", PORT)
     })
 }
 
